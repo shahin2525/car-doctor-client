@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const ServiceCard = ({ service }) => {
   const { img, title, price } = service;
   return (
@@ -14,3 +15,10 @@ const ServiceCard = ({ service }) => {
 };
 
 export default ServiceCard;
+ServiceCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+
+  title: PropTypes.string.isRequired,
+  service: PropTypes.string.isRequired,
+};
