@@ -16,9 +16,16 @@ const Navbar = () => {
         <Link className="text-xl font-bold">About</Link>
       </li>
       {user ? (
-        <li onClick={handleLogout}>
-          <Link className="text-xl font-bold">logout</Link>
-        </li>
+        <>
+          <li>
+            <Link className="text-xl font-bold" to="/bookings">
+              Bookings
+            </Link>
+          </li>
+          <li onClick={handleLogout}>
+            <Link className="text-xl font-bold">logout</Link>
+          </li>
+        </>
       ) : (
         <li>
           {" "}

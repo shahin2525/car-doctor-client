@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const service = useLoaderData();
-  const { title, _id, price } = service;
+  const { title, _id, price, img } = service;
   const { user } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
@@ -21,6 +21,7 @@ const CheckOut = () => {
       email,
       price: amount,
       service: _id,
+      img,
     };
 
     console.log(bookingInfo);
