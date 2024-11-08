@@ -20,6 +20,7 @@ const Bookings = () => {
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
+
           <thead>
             <tr>
               <th>
@@ -28,10 +29,10 @@ const Bookings = () => {
                 </label>
               </th>
               <th>image</th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>service</th>
+              <th>Date</th>
+              <th>price</th>
+              <th>status</th>
             </tr>
           </thead>
           <tbody>
