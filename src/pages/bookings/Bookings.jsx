@@ -14,6 +14,47 @@ const Bookings = () => {
         setBookings(data);
       });
   }, [url]);
+  const handleDelete = (id) => {
+    const proceed = confirm("are you proceed");
+    if (proceed) {
+      fetch(`http://localhost:5000/bookings/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            alert("data has deleted");
+            const remainingBookings = bookings.filter(
+              (booking) => booking._id !== id
+            );
+            setBookings(remainingBookings);
+          }
+        });
+    }
+  };
+  const confirmBooking = (id) => {
+    fetch(`http://localhost:5000/bookings/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "confirm" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const remainingData = bookings.filter(
+            (booking) => booking._id !== id
+          );
+          const updatedData = bookings.find((booking) => booking._id === id);
+          updatedData.status = "confirm";
+          const newData = [updatedData, ...remainingData];
+          setBookings(newData);
+        }
+      });
+  };
   return (
     <div>
       <h1>{bookings.length}</h1>
@@ -37,7 +78,12 @@ const Bookings = () => {
           </thead>
           <tbody>
             {bookings.map((booking) => (
-              <BookingsRow booking={booking} key={booking._id}></BookingsRow>
+              <BookingsRow
+                booking={booking}
+                key={booking._id}
+                handleDelete={handleDelete}
+                confirmBooking={confirmBooking}
+              ></BookingsRow>
             ))}
           </tbody>
           {/* foot */}
