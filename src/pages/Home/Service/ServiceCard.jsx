@@ -23,9 +23,9 @@ const ServiceCard = ({ service }) => {
 
 export default ServiceCard;
 ServiceCard.propTypes = {
-  img: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  img: PropTypes.string,
+  price: PropTypes.string,
 
-  title: PropTypes.string.isRequired,
-  service: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  service: PropTypes.object,
 };

@@ -60,7 +60,7 @@ BookingsRow.propTypes = {
 
   booking: PropTypes.object,
   customerName: PropTypes.string,
-  date: PropTypes.date,
+  date: PropTypes.func,
   handleDelete: PropTypes.func,
   confirmBooking: PropTypes.func,
 };
